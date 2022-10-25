@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Curcean_Teodor_iulian_Lab2.Data;
 using Curcean_Teodor_iulian_Lab2.Models;
 
-namespace Curcean_Teodor_iulian_Lab2.Pages.Publishers
+namespace Curcean_Teodor_iulian_Lab2.Pages.Authors
 {
     public class CreateModel : PageModel
     {
@@ -25,7 +25,7 @@ namespace Curcean_Teodor_iulian_Lab2.Pages.Publishers
         }
 
         [BindProperty]
-        public Publisher Publisher { get; set; }
+        public Author Author { get; set; }
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -33,11 +33,12 @@ namespace Curcean_Teodor_iulian_Lab2.Pages.Publishers
         {
           if (!ModelState.IsValid)
             {
-                ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "PublisherName");
+               
+                //ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "ID", "FullName");
                 return Page();
             }
 
-            _context.Publisher.Add(Publisher);
+            _context.Author.Add(Author);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

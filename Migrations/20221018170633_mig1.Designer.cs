@@ -4,6 +4,7 @@ using Curcean_Teodor_iulian_Lab2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Curcean_Teodor_iulian_Lab2.Migrations
 {
     [DbContext(typeof(Curcean_Teodor_iulian_Lab2Context))]
-    partial class Curcean_Teodor_iulian_Lab2ContextModelSnapshot : ModelSnapshot
+    [Migration("20221018170633_mig1")]
+    partial class mig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -96,7 +98,7 @@ namespace Curcean_Teodor_iulian_Lab2.Migrations
             modelBuilder.Entity("Curcean_Teodor_iulian_Lab2.Models.Book", b =>
                 {
                     b.HasOne("Curcean_Teodor_iulian_Lab2.Models.Author", "Author")
-                        .WithMany("Books")
+                        .WithMany()
                         .HasForeignKey("AuthorID");
 
                     b.HasOne("Curcean_Teodor_iulian_Lab2.Models.Publisher", "Publisher")
@@ -106,11 +108,6 @@ namespace Curcean_Teodor_iulian_Lab2.Migrations
                     b.Navigation("Author");
 
                     b.Navigation("Publisher");
-                });
-
-            modelBuilder.Entity("Curcean_Teodor_iulian_Lab2.Models.Author", b =>
-                {
-                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("Curcean_Teodor_iulian_Lab2.Models.Publisher", b =>

@@ -17,5 +17,7 @@ namespace Curcean_Teodor_iulian_Lab2.Data
         public DbSet<Curcean_Teodor_iulian_Lab2.Models.Book> Book { get; set; } = default!;
 
         public DbSet<Curcean_Teodor_iulian_Lab2.Models.Publisher> Publisher { get; set; }
+
+        public DbSet<Curcean_Teodor_iulian_Lab2.Models.Author> Author { get; set; }
     }
 }

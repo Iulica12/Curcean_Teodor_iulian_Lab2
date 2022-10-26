@@ -20,6 +20,7 @@ namespace Curcean_Teodor_iulian_Lab2.Models
         public int? AuthorID { get; set; }
         public Publisher? Publisher { get; set; }
         public Author? Author { get; set; }
-       
+        public ICollection<BookCategory>? BookCategories { get; set; }
+
     }
 }

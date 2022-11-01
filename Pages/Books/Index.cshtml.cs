@@ -19,7 +19,7 @@ namespace Curcean_Teodor_iulian_Lab2.Pages.Books
             _context = context;
         }
 
-        public IList<Book> Book { get;set; }
+        public IList<Book> Book { get; set; }
         public BookData BookD { get; set; }
         public int BookID { get; set; }
         public int CategoryID { get; set; }
@@ -29,6 +29,7 @@ namespace Curcean_Teodor_iulian_Lab2.Pages.Books
             BookD = new BookData();
             BookD.Books = await _context.Book
                 .Include(b => b.Publisher)
+                .Include(b =>b.Author)
                 .Include(b => b.BookCategories)
                 .ThenInclude(b => b.Category)
                 .AsNoTracking()
@@ -38,7 +39,7 @@ namespace Curcean_Teodor_iulian_Lab2.Pages.Books
             {
                 BookID = id.Value; 
                 Book book = BookD.Books
-                    .Where(i => i.ID == id.Value).Single(); 
+                .Where(i => i.ID == id.Value).Single(); 
                 BookD.Categories = book.BookCategories.Select(s => s.Category); }
         }
     }

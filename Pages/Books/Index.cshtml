@@ -10,18 +10,13 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Find by Book Title / Author Name:
-            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
+            Find by Book Title / Author Name: <input type="text" name="SearchString" value="@Model.CurrentFilter" /> <input type="submit" value="Search" class="btn btn-primary" /> | <a asp-page="./Index">Back to full List</a>
         </p>
     </div>
 </form>
-
 <table class="table">
     <thead>
         <tr>
@@ -30,16 +25,17 @@
                     @Html.DisplayNameFor(model => model.Book[0].Title)
                 </a>
             </th>
-            <th colspan="2">
-                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
-                    @Html.DisplayNameFor(model => model.Book[0].Author.FirstName)
-                </a>
-            </th>
             <th>
+                
                 @Html.DisplayNameFor(model => model.Book[0].Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].PublishingDate)
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.AuthorSort">
+                     @Html.DisplayNameFor(model => model.Book[0].Author)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].Publisher.PublisherName)
@@ -47,31 +43,28 @@
             <th>
                 @Html.DisplayNameFor(model => model.Book[0].BookCategories)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.BookD.Books)
         {
-
             string selectedRow = "";
             if (item.ID == Model.BookID)
             {
                 selectedRow = "table-success";
             }
-
             <tr class="@selectedRow">
                 <td>
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Author.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @Html.DisplayFor(modelItem => item.Price) 
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.PublishingDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author.FullName)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Publisher.PublisherName)
@@ -84,6 +77,7 @@
                         }
                     }
                 </td>
+
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |

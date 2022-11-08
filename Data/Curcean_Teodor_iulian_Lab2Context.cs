@@ -21,5 +21,9 @@ namespace Curcean_Teodor_iulian_Lab2.Data
         public DbSet<Curcean_Teodor_iulian_Lab2.Models.Author> Author { get; set; }
 
         public DbSet<Curcean_Teodor_iulian_Lab2.Models.Category> Category { get; set; }
+
+        public DbSet<Curcean_Teodor_iulian_Lab2.Models.Member> Member { get; set; }
+
+        public DbSet<Curcean_Teodor_iulian_Lab2.Models.Borrowing> Borrowing { get; set; }
     }
 }

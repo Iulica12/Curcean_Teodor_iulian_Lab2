@@ -10,6 +10,9 @@ namespace Curcean_Teodor_iulian_Lab2.Models
     {
         public int ID { get; set; }
         [Display(Name = "Book Title")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$", ErrorMessage = "Prenumele trebuie sa inceapa cu majuscula (ex. Ana sau Ana Maria sau AnaMaria")]
+        [StringLength(150, MinimumLength = 3)]
+        [Required]
         public string Title { get; set; }
 
         [Column(TypeName = "decimal(6, 2)")]

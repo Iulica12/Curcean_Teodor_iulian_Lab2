@@ -28,7 +28,7 @@ namespace Curcean_Teodor_iulian_Lab2.Pages.Borrowings
                 return NotFound();
             }
 
-            var borrowing = await _context.Borrowing.FirstOrDefaultAsync(m => m.ID == id);
+            var borrowing = await _context.Borrowing.Include(b=>b.Book).Include(m=>m.Member).FirstOrDefaultAsync(m => m.ID == id);
             if (borrowing == null)
             {
                 return NotFound();

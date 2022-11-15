@@ -36,8 +36,8 @@ namespace Curcean_Teodor_iulian_Lab2.Pages.Borrowings
                 return NotFound();
             }
             Borrowing = borrowing;
-           ViewData["BookID"] = new SelectList(_context.Book, "ID", "ID");
-           ViewData["MemberID"] = new SelectList(_context.Member, "ID", "ID");
+           ViewData["BookName"] = new SelectList(_context.Book, "Title", "Title");
+           ViewData["MemberFirstName"] = new SelectList(_context.Member, "FirstName", "FirstName");
             return Page();
         }
 
